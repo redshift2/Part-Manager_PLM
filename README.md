@@ -1,7 +1,15 @@
 # Welcome to Parts Manager PLM
 Parts Management done right, made by engineers for engineers
 
-# Server installation (Linux/Mac):
+# Server installation (Linux/Mac)
+## Build From Source
+Download the build script for this repo
+run the script
+''''
+sh build_plm.sh
+'''
+after that you should have a server.0-6.jar in your directory. From there you can decide to run the server locally or build the docker container
+
 ## Bare Metal Installation
 
 Download the server
@@ -20,22 +28,7 @@ Launch it:
 $ java -jar server-0.6.jar
 ```
 
-## Build From Source
-```SH
- $ mkdir parts-manager
- $ cd parts-manager
- $ git clone https://github.com/redshift2/PM_module_PLM.git
- $ git clone https://github.com/redshift2/PM_module_intranet.git
- $ git clone https://github.com/redshift2/PM_module_user_management.git
- $ cd Parts_manager_intranet_module/app/
- $ ln -s ../../PM_module_PLM .
- $ ln -s ../../PM_module_user_management .
- $ cd ..
- $ ./gradlew bootJar
- $ cp server/build/libs/server-0.6.jar ..
- $ cd ..
-```
- 
+
 ## Docker
 This assumes that you have a working docker installation, see this web page for docker installation https://docs.docker.com/engine/install/
 
