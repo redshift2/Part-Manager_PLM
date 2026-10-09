@@ -5,9 +5,9 @@ Parts Management done right, made by engineers for engineers
 ## Build From Source
 Download the build script for this repo
 run the script
-''''
+```bash
 sh build_plm.sh
-'''
+```
 after that you should have a server.0-6.jar in your directory. From there you can decide to run the server locally or build the docker container
 
 ## Bare Metal Installation
