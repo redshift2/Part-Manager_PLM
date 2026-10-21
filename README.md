@@ -10,12 +10,12 @@ https://github.com/redshift2/part-manager-plm_for_freecad
 # Server installation (Linux/Mac)
 
 This system is composed of 3 sub modules
-Main server module
-https://github.com/redshift2/PM_module_intranet
-PLM module
-https://github.com/redshift2/Part-Manager_PLM
-User manager module
-https://github.com/redshift2/PM_module_user_management
+
+**Main server module**   https://github.com/redshift2/PM_module_intranet
+
+**PLM module**           https://github.com/redshift2/Part-Manager_PLM
+
+**User manager module**  https://github.com/redshift2/PM_module_user_management
 
 
 ## Build From Source
