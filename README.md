@@ -17,6 +17,7 @@ This system is composed of 3 sub modules
 
 **User manager module**  https://github.com/redshift2/PM_module_user_management
 
+**Global Workspace Manager** https://github.com/redshift2/PM_module_workspace
 
 ## Build From Source
 Download the build script for this repo
