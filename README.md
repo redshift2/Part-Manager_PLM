@@ -9,7 +9,7 @@ https://github.com/redshift2/part-manager-plm_for_freecad
 
 # Server installation (Linux/Mac)
 
-This system is composed of 3 sub modules
+This system is composed of 5 sub modules
 
 **Main server module**   https://github.com/redshift2/PM_module_intranet
 
@@ -17,7 +17,9 @@ This system is composed of 3 sub modules
 
 **User manager module**  https://github.com/redshift2/PM_module_user_management
 
-**Global Workspace Manager** https://github.com/redshift2/PM_module_workspace
+**Global Workspace Manager** https://github.com/redshift2/PM_module_workspace (optional)
+
+**Material Library** https://github.com/redshift2/PM_module_materials (optional)
 
 ## Build From Source
 Download the build script for this repo
@@ -31,7 +33,7 @@ after that you should have a server.0-6.jar in your directory. From there you ca
 
 Download the server
 ```bash
-$ wget https://github.com/redshift2/Part-Manager_PLM/releases/download/v2.0/server-0.6.jar
+$ wget https://github.com/redshift2/Part-Manager_PLM/releases/download/v3.0/server-0.6.jar
 ```
 
 Check Java version > 25:
