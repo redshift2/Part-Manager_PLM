@@ -8,8 +8,8 @@ See the freecad work bench here
 https://github.com/redshift2/part-manager-plm_for_freecad
 
 # Server installation (Linux/Mac)
-
-This system is composed of 5 sub modules
+o
+This system is composed of 6 sub modules
 
 **Main server module**   https://github.com/redshift2/PM_module_intranet
 
@@ -17,9 +17,14 @@ This system is composed of 5 sub modules
 
 **User manager module**  https://github.com/redshift2/PM_module_user_management
 
-**Global Workspace Manager** https://github.com/redshift2/PM_module_workspace (optional)
+**Global Workspace Manager** https://github.com/redshift2/PM_module_workspace 
 
-**Material Library** https://github.com/redshift2/PM_module_materials (optional)
+**Material Library** https://github.com/redshift2/PM_module_materials
+
+**Server Admin** https://github.com/redshift2/PM_module_server-admin
+
+There is also remote worker module that can be installed remote or local servers
+https://github.com/redshift2/Part-Manager_Remote_worker
 
 ## Build From Source
 Download the build script for this repo
@@ -75,10 +80,16 @@ services:
     environment:
       MAX_UPLOAD_SIZE: 1073741824  #set the maximum upload file size in bytes (This is set to 1gb)
       HOST_URL: http://<server ip>:<port>   #set the server domain name. Port is not required if using a reverse proxy
-                                            #examples https://taackplm.org http://taackplm.org:9442 or 192.168.1.20:9442
+                                            #examples https://plm.server.org http://plmserver.org:9442 or 192.168.1.20:9442
+      SERVER_ADMIN_JOB_STORAGE: /jobs
+      SERVER_ADMIN_SCRIPT_STORAGE: /scripts
+      PLM_PREVIEW_STORAGE: /plm-previews
     volumes:
       - ./partsmanager-plm/database:/database
       - ./partsmanager-plm/vault:/root/intranetFilesDev
+      - ./partsmanager-plm/jobs:/jobs
+      - ./partsmanager-plm/scripts:/scripts
+      - ./partsmanager-plm/plm-previews:/plm-previews
 
 ```
 
