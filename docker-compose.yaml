@@ -20,7 +20,14 @@ services:
     environment:
       MAX_UPLOAD_SIZE: 1073741824  #set the maximum upload file size in bytes (This is set to 1gb)
       HOST_URL: http://<server ip>:<port>   #set the server domain name. Port is not required if using a reverse proxy
-                                            #examples https://taackplm.org http://taackplm.org:9442 or 192.168.1.20:9442
+                                            #examples https://plm.server.org http://plmserver.org:9442 or 192.168.1.20:9442
+      SERVER_ADMIN_JOB_STORAGE: /jobs
+      SERVER_ADMIN_SCRIPT_STORAGE: /scripts
+      PLM_PREVIEW_STORAGE: /plm-previews
     volumes:
       - ./partsmanager-plm/database:/database
       - ./partsmanager-plm/vault:/root/intranetFilesDev
+      - ./partsmanager-plm/jobs:/jobs
+      - ./partsmanager-plm/scripts:/scripts
+      - ./partsmanager-plm/plm-previews:/plm-previews
+      
