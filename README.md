@@ -110,3 +110,18 @@ $ sudo docker compose up -d
 
 # You are done
 access the server [http://localhost:9442/](http://localhost:9442/), connect with `admin` / `ChangeIt` credentials.
+
+
+<img width="1890" height="540" alt="image" src="https://github.com/user-attachments/assets/c6b2bd74-0dd9-4d0b-aef4-1f0a5018df29" />
+
+
+<img width="1915" height="866" alt="image" src="https://github.com/user-attachments/assets/5c6cea78-662a-4e31-971b-228c0c52b515" />
+
+<img width="1915" height="866" alt="image" src="https://github.com/user-attachments/assets/d840bdba-4f6b-4a96-ac08-d8ba3e086f17" />
+
+<img width="1915" height="866" alt="image" src="https://github.com/user-attachments/assets/22764b9f-87ae-4c98-be1c-07ee9cfc6618" />
+
+<img width="1915" height="866" alt="image" src="https://github.com/user-attachments/assets/bc11a937-6ac8-4d04-b7d1-4cc73e9809f5" />
+
+
+
