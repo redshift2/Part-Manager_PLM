@@ -38,7 +38,7 @@ after that you should have a server.0-6.jar in your directory. From there you ca
 
 Download the server
 ```bash
-$ wget https://github.com/redshift2/Part-Manager_PLM/releases/download/v3.1/server-0.6.jar
+$ wget https://github.com/redshift2/Part-Manager_PLM/releases/download/v3.2/server-0.6.jar
 ```
 
 Check Java version > 25:
@@ -95,7 +95,7 @@ services:
 
 Download the server to the same location as the docker-compose.yml file
 ```bash
-$ wget https://github.com/redshift2/Part-Manager_PLM/releases/download/v3.1/server-0.6.jar
+$ wget https://github.com/redshift2/Part-Manager_PLM/releases/download/v3.2/server-0.6.jar
 ```
 Build the docker image
 ```bash
