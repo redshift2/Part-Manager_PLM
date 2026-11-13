@@ -23,6 +23,8 @@ This system is composed of 6 sub modules
 
 **Server Admin** https://github.com/redshift2/PM_module_server-admin
 
+**Advanced 3d Viewer** https://github.com/redshift2/PM_module_advanced_3d_viewer
+
 There is also remote worker module that can be installed remote or local servers
 https://github.com/redshift2/Part-Manager_Remote_worker
 
@@ -84,6 +86,10 @@ services:
       SERVER_ADMIN_JOB_STORAGE: /jobs
       SERVER_ADMIN_SCRIPT_STORAGE: /scripts
       PLM_PREVIEW_STORAGE: /plm-previews
+      PM_OIDC_PUBLIC_URL: "https://your.oauth.serveprovider.org"  #replace with your provider
+      PM_OIDC_SECRET_KEY: "xxxx"  # to get your secret key run 
+                                  # openssl rand -base64 32
+
     volumes:
       - ./partsmanager-plm/database:/database
       - ./partsmanager-plm/vault:/root/intranetFilesDev
@@ -123,5 +129,4 @@ access the server [http://localhost:9442/](http://localhost:9442/), connect with
 
 <img width="1915" height="866" alt="image" src="https://github.com/user-attachments/assets/bc11a937-6ac8-4d04-b7d1-4cc73e9809f5" />
 
-
-
+<img width="1913" height="963" alt="image" src="https://github.com/user-attachments/assets/8d7342ce-891b-45dd-b58d-a624ae4f04b0" />
