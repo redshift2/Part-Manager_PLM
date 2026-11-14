@@ -75,7 +75,7 @@ services:
         COPY server-0.6.jar /opt/app
         CMD ["sh", "-c", "java -Dgrails.env=production -DdataSource.url='jdbc:h2:/database/taack.db;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE' -Dgrails.controllers.upload.maxFileSize=$${MAX_UPLOAD_SIZE} -Dgrails.controllers.upload.maxRequestSize=$${MAX_UPLOAD_SIZE} -Dgrails.serverURL=$${HOST_URL}} -jar /opt/app/server-0.6.jar"] 
 
-    container_name: taack-plm
+    container_name: part-manager-plm
     restart: unless-stopped
     ports:
       - 9442:9442
