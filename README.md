@@ -28,6 +28,67 @@ This system is composed of 6 sub modules
 There is also remote worker module that can be installed remote or local servers
 https://github.com/redshift2/Part-Manager_Remote_worker
 
+## Docker 
+Download the docker-compose.yaml file, edit the paths, ports, and file in the host URL
+or copy from below in this section. There is a docker compose for building the image in a different section of this readme file
+```bash
+sudo docker compose pull
+sudo docker compose up -d
+```
+You're done.
+access the server [http://localhost:9442/](http://localhost:9442/), connect with `admin` / `ChangeIt` credentials.
+
+
+```yaml
+
+services:
+  base:
+    image: ghcr.io/redshift2/partsmanager-plm:latest
+    pull_policy: always
+
+    container_name: part-manager-plm
+    restart: unless-stopped
+
+    ports:
+      - "9442:9442"
+
+    environment:
+      # Maximum upload size (1 GB)
+      MAX_UPLOAD_SIZE: 1073741824
+
+      # Server URL
+      HOST_URL: "http://<server ip>:<port>"
+
+      # Remote worker storage
+      SERVER_ADMIN_JOB_STORAGE: /jobs
+      SERVER_ADMIN_SCRIPT_STORAGE: /scripts
+
+      # PLM preview storage
+      PLM_PREVIEW_STORAGE: /plm-previews
+
+      # OpenID Connect configuration
+      PM_OIDC_PUBLIC_URL: "https://your.oauth.serveprovider.org"
+      PM_OIDC_SECRET_KEY: "xxxx"  #to get your serect run
+                                  # openssl rand -base64 32
+
+
+    volumes:
+      # Persistent database
+      - ./partsmanager-plm/database:/database
+
+      # Uploaded files and attachments
+      - ./partsmanager-plm/vault:/root/intranetFilesDev
+
+      # Remote worker jobs
+      - ./partsmanager-plm/jobs:/jobs
+
+      # Remote worker scripts
+      - ./partsmanager-plm/scripts:/scripts
+
+      # PLM preview files
+      - ./partsmanager-plm/plm-previews:/plm-previews
+```
+
 ## Build From Source
 Download the build script for this repo
 run the script
@@ -55,10 +116,11 @@ $ java -jar server-0.6.jar
 ```
 
 
-## Docker
+## Docker Build
 This assumes that you have a working docker installation, see this web page for docker installation https://docs.docker.com/engine/install/
 
-Download the ***docker-compose.yml*** file or copy it from below and adjust the paths and port to suit your needs
+Download the ***docker-compose BUILD.yml*** file or copy it from below and adjust the paths and port to suit your needs
+Rename name it to ocker-compose.yml
 ```yaml
 services:
   base:
