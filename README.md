@@ -31,7 +31,12 @@ https://github.com/redshift2/Part-Manager_Remote_worker
 ## Docker 
 Download the docker-compose.yaml file, edit the paths, ports, and file in the host URL
 or copy from below in this section. There is a docker compose for building the image in a different section of this readme file
+
+Copy the env.example to .env and change the values around to meet your need
+
+
 ```bash
+cp env.example .env
 sudo docker compose pull
 sudo docker compose up -d
 ```
@@ -45,48 +50,57 @@ services:
   base:
     image: ghcr.io/redshift2/partsmanager-plm:latest
     pull_policy: always
-
     container_name: part-manager-plm
     restart: unless-stopped
-
     ports:
       - "9442:9442"
-
     environment:
       # Maximum upload size (1 GB)
       MAX_UPLOAD_SIZE: 1073741824
-
-      # Server URL
-      HOST_URL: "http://<server ip>:<port>"
-
+      # Server URL: replace with your externally reachable address
+      HOST_URL: ${PM_SERVER_URL:-http://base:9442}
       # Remote worker storage
       SERVER_ADMIN_JOB_STORAGE: /jobs
       SERVER_ADMIN_SCRIPT_STORAGE: /scripts
-
       # PLM preview storage
       PLM_PREVIEW_STORAGE: /plm-previews
-
       # OpenID Connect configuration
       PM_OIDC_PUBLIC_URL: "https://your.oauth.serveprovider.org"
-      PM_OIDC_SECRET_KEY: "xxxx"  #to get your serect run
-                                  # openssl rand -base64 32
-
-
+      PM_OIDC_SECRET_KEY: "xxxx" # Generate using: openssl rand -base64 32
     volumes:
-      # Persistent database
       - ./partsmanager-plm/database:/database
-
-      # Uploaded files and attachments
       - ./partsmanager-plm/vault:/root/intranetFilesDev
-
-      # Remote worker jobs
       - ./partsmanager-plm/jobs:/jobs
-
-      # Remote worker scripts
       - ./partsmanager-plm/scripts:/scripts
-
-      # PLM preview files
       - ./partsmanager-plm/plm-previews:/plm-previews
+
+  pm-worker:
+    image: ghcr.io/redshift2/parts-manager-worker:latest
+    pull_policy: always
+    container_name: parts-manager-worker
+    restart: unless-stopped
+    init: true
+    depends_on:
+      - base
+    environment:
+      PM_WORKER_HOME: /var/lib/pm-worker
+      PM_SERVER_URL: ${PM_SERVER_URL:-http://base:9442}
+      PM_WORKER_NAME: ${PM_WORKER_NAME:-pm-freecad-worker}
+      PM_POLL_SECONDS: ${PM_POLL_SECONDS:-15}
+      FREECAD_CMD: ${FREECAD_CMD:-FreeCADCmd}
+      PYTHONUNBUFFERED: '1'
+    volumes:
+      - worker_state:/var/lib/pm-worker
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    pids_limit: 256
+    mem_limit: 4g
+    # Worker initiates outbound requests; no inbound ports needed.
+
+volumes:
+  worker_state:
 ```
 
 ## Build From Source
